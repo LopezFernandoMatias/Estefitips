@@ -1,947 +1,1104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Meta etiquetas para SEO y Redes Sociales -->
-<meta name="description" content="Si este proyecto te sirvió, una pequeña propina es el mejor motor para seguir creando contenido de valor. ¡Gracias por tu generosidad!">
-
-<!-- WhatsApp / Facebook / LinkedIn (Open Graph) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://estefi-three.vercel.app/"> <!-- Cambiá esto por tu link real -->
-<meta property="og:title" content="¡Un cafecito por aquí! Gracias por tu propina">
-<meta property="og:description" content="¿Te fue útil? Tu apoyo ayuda a mantener este espacio vivo. ¡Cada granito de arena cuenta!">
-<meta property="og:image" content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://estefi-three.vercel.app/">
-<meta property="twitter:title" content="¡Gracias por tu propina!">
-<meta property="twitter:description" content="Si valorás mi trabajo, podés colaborar con una propina aquí. ¡Muchas gracias!">
-<meta property="twitter:image" content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png">
-
-<title>Enrique Tomas – Tips Appreciated!</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --pink: #f4a0b0;
-    --pink-deep: #e8637e;
-    --blush: rgba(253, 232, 238, 0.85); /* Semi-transparent */
-    --cream: rgba(255, 248, 245, 0.9); /* Semi-transparent */
-    --warm: #f9efe7;
-    --text: #2d1f25;
-    --text-soft: #7a5360;
-    --gold: #d4a843;
-    --white: rgba(255, 255, 255, 0.9); /* Semi-transparent */
-    --shadow: 0 8px 32px rgba(232,99,126,0.15);
-    --shadow-sm: 0 3px 12px rgba(232,99,126,0.12);
-  }
-
-  html { scroll-behavior: smooth; }
-/*
-  body {
-    font-family: 'DM Sans', sans-serif;
-    /* Injected Background Image */
-    /*
-    background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-*/
-body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-    background-color: var(--warm); /* Color de respaldo */
-  }
-
-  /* Nuevo método para fondo fijo sin saltos */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-
-    background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    width: 100vw;
-    height: 100dvh;
-
-    transform: translateZ(0);
-    will-change: transform;
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-html, body {
-    overflow-x: hidden;
-    min-height: 100dvh;
-}
-
-
-  /* ===== FLOATING PARTICLES ===== */
-  .particles {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 0;
-    overflow: hidden;
-  }
-  .particle {
-    position: absolute;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--pink);
-    opacity: 0;
-    animation: floatUp var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
-  }
-  .particle:nth-child(odd) {
-    width: 4px; height: 4px;
-    background: var(--pink-deep);
-  }
-  .particle.heart {
-    width: auto; height: auto;
-    background: transparent;
-    font-size: 12px;
-    animation: floatUp var(--dur, 10s) var(--delay, 0s) infinite ease-in-out;
-  }
-  @keyframes floatUp {
-    0%   { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-    10%  { opacity: 0.6; }
-    90%  { opacity: 0.3; }
-    100% { transform: translateY(-10vh) translateX(var(--drift, 40px)) rotate(360deg); opacity: 0; }
-  }
-
-  /* ===== WRAPPER ===== *//*
-  .wrapper {
-    position: relative; z-index: 1;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 0 60px;
-    background: rgba(255, 255, 255, 0.7); /* Translucent background for content *//*
-    backdrop-filter: blur(5px); /* Added blur for legibility *//*
-    border-radius: 20px; /* Rounded wrapper corners *//*
-    margin-top: 20px; /* Shifted down slightly *//*
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-*/
-
-/* ===== WRAPPER MÁS TRANSPARENTE ===== */
-  .wrapper {
-    position: relative; z-index: 1;
-    max-width: 520px;
-    margin: 20px auto; /* Centrado con margen arriba */
-    padding: 0 0 60px;
-    /* Bajamos la opacidad de 0.7 a 0.4 o 0.5 según tu gusto */
-    background: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: blur(8px); /* Aumentamos el desenfoque para que el texto sea legible */
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  /* ===== HEADER ===== *//*
-  .site-header {
-    background: linear-gradient(160deg, rgba(255, 240, 244, 0.8) 0%, var(--blush) 60%, rgba(255, 216, 228, 0.8) 100%);
-    padding: 28px 24px 0;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0; /* Match wrapper corners *//*
-  }
-    */
-  /* Ajuste del header para que sea más sutil */
-  .site-header {
-    /* Gradiente con más transparencia */
-    background: linear-gradient(160deg, rgba(255, 240, 244, 0.5) 0%, rgba(253, 232, 238, 0.4) 60%, rgba(255, 216, 228, 0.5) 100%);
-    padding: 28px 24px 0;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0;
-  }
-  .site-header::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 248, 245, 0.9)); /* Matches cream transparency */
-  }
-
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-  }
-
-  .logo-box {
-    border: 2.5px solid var(--text);
-    padding: 8px 14px;
-    text-align: center;
-    background: var(--white);
-    box-shadow: 3px 3px 0 var(--text);
-    animation: popIn 0.6s cubic-bezier(.34,1.56,.64,1) both;
-  }
-  .logo-box .brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-    color: var(--text);
-  }
-  .logo-box .stars {
-    color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .support-badge {
-    background: var(--white);
-    border: 1.5px solid var(--pink);
-    border-radius: 20px;
-    padding: 8px 14px 8px 10px;
-    display: flex; align-items: center; gap: 7px;
-    font-size: 12px; font-weight: 500;
-    color: var(--pink-deep);
-    box-shadow: var(--shadow-sm);
-    animation: popIn 0.7s 0.15s cubic-bezier(.34,1.56,.64,1) both;
-  }
-  .support-badge .dot {
-    width: 22px; height: 22px;
-    background: rgba(253, 232, 238, 0.1); /* Semi-transparent */
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    animation: heartbeat 1.6s 1s ease-in-out infinite;
-  }
-
-  .hero-text {
-    padding: 20px 0 10px;
-    animation: slideUp 0.7s 0.2s ease both;
-  }
-  .hero-text h1 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .hero-text .tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 30px;
-    color: var(--pink-deep);
-    line-height: 1.2;
-  }
-  .tagline span.heart-inline {
-    display: inline-block;
-    animation: heartbeat 1.4s ease-in-out infinite;
-  }
-
-  .hero-sub {
-    font-size: 14px;
-    color: var(--text-soft);
-    line-height: 1.6;
-    margin: 14px 0 20px;
-    font-weight: 400;
-    animation: slideUp 0.7s 0.35s ease both;
-  }
-
-  /* REPLACED ANIME CHAR CONTAINER WITH TRANSITIONAL SPACE */
-  .char-transition-spacer {
-    height: 10px; /* Reduced space */
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ===== BENEFITS ===== */
-  .benefits {
-    display: flex;
-    gap: 10px;
-    padding: 20px 24px 28px;
-    animation: slideUp 0.7s 0.4s ease both;
-    position: relative;
-    z-index: 2;
-  }
-  .benefit-item {
-    flex: 1;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    text-align: center;
-  }
-  .benefit-icon {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 2px solid var(--pink);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .benefit-icon:hover {
-    transform: scale(1.15) rotate(-5deg);
-    box-shadow: 0 6px 20px rgba(232,99,126,0.3);
-  }
-  .benefit-item span {
-    font-size: 11px;
-    color: var(--text-soft);
-    line-height: 1.4;
-    font-weight: 500;
-  }
-
-  /* ===== SECTION TITLE ===== */
-  .section-title {
-    display: flex; align-items: center;
-    gap: 10px;
-    text-align: center;
-    justify-content: center;
-    margin: 0 24px 24px;
-    animation: slideUp 0.7s 0.5s ease both;
-    position: relative;
-    z-index: 2;
-  }
-  .section-title::before,
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1.5px;
-    background: linear-gradient(to right, transparent, var(--pink));
-  }
-  .section-title::after {
-    background: linear-gradient(to left, transparent, var(--pink));
-  }
-  .section-title span {
-    background: var(--pink-deep);
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    padding: 6px 16px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  /* ===== WAYS TO TIP GRID ===== *//*
-  .tips-card {
-    background: var(--white);
-    margin: 0 16px;
-    border-radius: 24px;
-    padding: 28px 20px 24px;
-    box-shadow: var(--shadow);
-    animation: slideUp 0.7s 0.55s ease both;
-    position: relative;
-    z-index: 2;
-  }
-*/
-
-/* Ajuste de las tarjetas internas para que no se vean tan pesadas */
-  .tips-card {
-    background: rgba(255, 255, 255, 0.6); /* Tarjeta interna más clara */
-    margin: 0 16px;
-    border-radius: 24px;
-    padding: 28px 20px 24px;
-    box-shadow: var(--shadow);
-    animation: slideUp 0.7s 0.55s ease both;
-    position: relative;
-    z-index: 2;
-  }
-  .tip-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .tip-item {
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    padding: 18px 10px 14px;
-    border-radius: 16px;
-    border: 1.5px solid rgba(240, 224, 230, 0.7);
-    background: rgba(253, 232, 238, 0.9); /* Semi-transparent */
-    cursor: pointer;
-    text-decoration: none; color: inherit;
-    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-  .tip-item::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.8), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .tip-item:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 12px 30px rgba(232,99,126,0.2);
-    border-color: var(--pink);
-  }
-  .tip-item:hover::before { opacity: 1; }
-
-  .tip-logo {
-    width: 54px; height: 54px;
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  /* Kofi */
-  .tip-item[data-method="kofi"] .tip-logo {
-    background: linear-gradient(135deg, #29abe0, #13a5d5);
-    animation: wobble 3s 1s ease-in-out infinite;
-  }
-  /* PayPal */
-  .tip-item[data-method="paypal"] .tip-logo {
-    background: linear-gradient(135deg, #003087, #0070ba);
-    animation: wobble 3s 1.2s ease-in-out infinite;
-  }
-  /* Wise */
-  .tip-item[data-method="wise"] .tip-logo {
-    background: linear-gradient(135deg, #9fe870, #48d748);
-    animation: wobble 3s 1.4s ease-in-out infinite;
-  }
-  /* Bitcoin */
-  .tip-item[data-method="bitcoin"] .tip-logo {
-    background: linear-gradient(135deg, #f7931a, #e07b10);
-    animation: pulse-glow 2s 0.5s ease-in-out infinite;
-  }
-  /* Ethereum */
-  .tip-item[data-method="ethereum"] .tip-logo {
-    background: linear-gradient(135deg, #627eea, #4a5ecc);
-    animation: pulse-glow 2s 0.8s ease-in-out infinite;
-  }
-  /* More */
-  .tip-item[data-method="more"] .tip-logo {
-    background: linear-gradient(135deg, #fde8ee, #fbc8d6);
-    animation: heartbeat 1.8s 0.3s ease-in-out infinite;
-  }
-
-  @keyframes wobble {
-    0%, 80%, 100% { transform: rotate(0deg) scale(1); }
-    85% { transform: rotate(-8deg) scale(1.05); }
-    92% { transform: rotate(6deg) scale(1.05); }
-  }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(247,147,26,0.4); transform: scale(1); }
-    50% { box-shadow: 0 0 0 8px rgba(247,147,26,0); transform: scale(1.06); }
-  }
-  .tip-item[data-method="ethereum"] .tip-logo {
-    animation: pulse-glow-eth 2s 0.8s ease-in-out infinite;
-  }
-  @keyframes pulse-glow-eth {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(98,126,234,0.4); transform: scale(1); }
-    50% { box-shadow: 0 0 0 8px rgba(98,126,234,0); transform: scale(1.06); }
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    14%  { transform: scale(1.12); }
-    28%  { transform: scale(1); }
-    42%  { transform: scale(1.08); }
-    70%  { transform: scale(1); }
-  }
-
-  .tip-item h3 {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    text-align: center;
-  }
-  .tip-item p {
-    font-size: 10.5px;
-    color: var(--text-soft);
-    text-align: center;
-    line-height: 1.4;
-  }
-
-  /* Logo images / SVGs inline */
-  .logo-kofi  { color: white; }
-  .logo-paypal { color: white; }
-  .logo-wise   { color: #163300; font-weight: 900; font-size: 14px; letter-spacing: -0.5px; }
-
-  /* ===== CUSTOM AMOUNT ===== */
-  .custom-tip {
-    background: rgba(253, 232, 238, 0.7); /* Semi-transparent */
-    border: 1.5px solid var(--pink);
-    border-radius: 16px;
-    padding: 16px 20px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .custom-tip .icon-wrap {
-    width: 50px; height: 50px;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .custom-tip .icon-wrap .hand { font-size: 28px; display: block; }
-  .custom-tip .icon-wrap .heart-float {
-    position: absolute; top: -6px; right: -4px;
-    font-size: 14px;
-    animation: heartFloat 2.5s ease-in-out infinite;
-  }
-  @keyframes heartFloat {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-8px) scale(1.15); opacity: 0.8; }
-  }
-  .custom-tip-text { flex: 1; }
-  .custom-tip-text h3 {
-    font-size: 15px; font-weight: 600; margin-bottom: 3px;
-  }
-  .custom-tip-text p {
-    font-size: 11.5px; color: var(--text-soft); line-height: 1.4;
-  }
-  .btn-tip {
-    background: linear-gradient(135deg, var(--pink-deep), #d44d6a);
-    color: white;
-    border: none;
-    padding: 13px 20px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    white-space: nowrap;
-    display: flex; align-items: center; gap: 6px;
-    box-shadow: 0 4px 18px rgba(232,99,126,0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: shimmer-btn 3s 2s ease-in-out infinite;
-  }
-  .btn-tip:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 28px rgba(232,99,126,0.55);
-  }
-  @keyframes shimmer-btn {
-    0%, 80%, 100% { filter: brightness(1); }
-    90% { filter: brightness(1.15); }
-  }
-
-  /* ===== SOCIAL ===== */
-  .social-section {
-    margin: 32px 24px 0;
-    text-align: center;
-    animation: slideUp 0.7s 0.7s ease both;
-    position: relative;
-    z-index: 2;
-  }
-  .social-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--pink-deep);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
-    justify-content: center;
-  }
-  .social-label::before, .social-label::after {
-    content: ''; flex: 1; height: 1px;
-    background: linear-gradient(to right, transparent, var(--pink));
-  }
-  .social-label::after {
-    background: linear-gradient(to left, transparent, var(--pink));
-  }
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  .social-icon {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 1.5px solid rgba(240, 221, 228, 0.7);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
-    color: var(--text-soft);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
-    box-shadow: var(--shadow-sm);
-  }
-  .social-icon:nth-child(1) { animation: spinIn 0.5s 0.8s both; }
-  .social-icon:nth-child(2) { animation: spinIn 0.5s 0.9s both; }
-  .social-icon:nth-child(3) { animation: spinIn 0.5s 1.0s both; }
-  .social-icon:nth-child(4) { animation: spinIn 0.5s 1.1s both; }
-  .social-icon:nth-child(5) { animation: spinIn 0.5s 1.2s both; }
-  @keyframes spinIn {
-    from { transform: scale(0) rotate(-180deg); opacity: 0; }
-    to   { transform: scale(1) rotate(0deg); opacity: 1; }
-  }
-  .social-icon:hover {
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(232,99,126,0.25);
-    border-color: var(--pink);
-    color: var(--pink-deep);
-  }
-
-  /* ===== FOOTER ===== */
-  .site-footer {
-    background: linear-gradient(135deg, rgba(232, 99, 126, 0.9), rgba(201, 64, 96, 0.9)); /* Semi-transparent */
-    margin: 36px 0 0;
-    padding: 28px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-radius: 0 0 20px 20px; /* Match wrapper corners */
-  }
-  .site-footer::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  @media (max-width: 768px) {
-    body::before {
-        position: absolute;
-        height: 100%;
-        min-height: 100dvh;
-    }
-}
-  .footer-main {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 30px;
-    color: white;
-    position: relative;
-    animation: shimmerText 3s ease-in-out infinite;
-  }
-  .footer-main .sparkle {
-    display: inline-block;
-    animation: sparkle 1.5s ease-in-out infinite;
-    margin: 0 4px;
-  }
-  .footer-main .sparkle:nth-child(2) { animation-delay: 0.5s; }
-  @keyframes sparkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.3) rotate(20deg); opacity: 0.8; }
-  }
-  .footer-sub {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    color: rgba(255,255,255,0.7);
-    text-transform: uppercase;
-    margin-top: 6px;
-    position: relative;
-  }
-  @keyframes shimmerText {
-    0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
-    50% { text-shadow: 0 0 40px rgba(255,255,255,0.6), 0 2px 10px rgba(0,0,0,0.1); }
-  }
-
-  /* ===== UTILS ===== */
-  @keyframes popIn {
-    from { transform: scale(0.5); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-  }
-
-  /* ===== RIPPLE ===== */
-  .ripple-container { position: relative; overflow: hidden; }
-  .ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    animation: rippleAnim 0.6s linear;
-    background-color: rgba(232,99,126,0.25);
-    pointer-events: none;
-  }
-  @keyframes rippleAnim {
-    to { transform: scale(4); opacity: 0; }
-  }
-
-  /* ===== TOAST ===== */
-  .toast {
-    position: fixed;
-    bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
-    background: var(--text);
-    color: white;
-    padding: 12px 22px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: 500;
-    z-index: 100;
-    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
-    white-space: nowrap;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 400px) {
-    .hero-text h1 { font-size: 30px; }
-    .hero-text .tagline { font-size: 26px; }
-    .tip-item { padding: 14px 6px 12px; }
-    .tip-logo { width: 44px; height: 44px; font-size: 22px; }
-  }
-</style>
-</head>
-<body>
-
-<!-- Floating particles -->
-<div class="particles" id="particles"></div>
-
-<div class="wrapper">
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="top-bar">
-      <div class="logo-box">
-        <div class="brand">ENRIQUE<br>TOMAS</div>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="support-badge">
-        <div class="dot">💗</div>
-        <span>Your support<br>means the world!</span>
-      </div>
-    </div>
-
-    <div class="hero-text">
-      <h1>Enjoying<br>my content?</h1>
-      <div class="tagline">Tips are appreciated! <span class="heart-inline">🩷</span></div>
-    </div>
-    <p class="hero-sub">Thank you for supporting my work and helping me create more! 💖</p>
-
-    <!-- Transformed into a clean transition spacer -->
-    <div class="char-transition-spacer"></div>
-  </header>
-
-  <!-- BENEFITS -->
-  <div class="benefits">
-    <div class="benefit-item">
-      <div class="benefit-icon">❤️</div>
-      <span>Your support<br>helps me grow</span>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">⭐</div>
-      <span>More content<br>more often</span>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">😊</div>
-      <span>Big or small,<br>it all helps!</span>
-    </div>
-  </div>
-
-  <!-- WAYS TO TIP -->
-  <div class="section-title">
-    <span>✦ Ways to Tip ✦</span>
-  </div>
-
-  <div class="tips-card">
-    <div class="tip-grid">
-
-      <a href="#" data-method="kofi" class="tip-item ripple-container" data-label="Ko-fi">
-        <div class="tip-logo logo-kofi">
-          <!-- Ko-fi cup icon -->
-          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="36" height="36" rx="8" fill="transparent"/>
-            <path d="M8 12h20v2s2 0 2 4-2 4-2 4H8V12z" fill="white" opacity="0.9"/>
-            <path d="M10 22v4h14v-4" fill="white" opacity="0.9"/>
-            <circle cx="22" cy="17" r="2" fill="#29abe0"/>
-            <path d="M13 8 Q15 5 17 8" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <path d="M18 7 Q20 4 22 7" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Ko-fi</h3>
-        <p>One-time tips or membership</p>
-      </a>
-
-      <a href="#" data-method="paypal" class="tip-item ripple-container" data-label="PayPal">
-        <div class="tip-logo logo-paypal">
-          <svg width="28" height="32" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.5 2H15c3.5 0 5.5 2 5 5.5-.5 4-3 6-6.5 6H11L9.5 22H5.5L8.5 2H6.5z" fill="white" opacity="0.95"/>
-            <path d="M9 8H15.5c2 0 3 1 2.5 3-.5 2.5-2 3.5-4.5 3.5h-2L9 8z" fill="#003087"/>
-          </svg>
-        </div>
-        <h3>PayPal</h3>
-        <p>Secure &amp; easy worldwide</p>
-      </a>
-
-      <a href="#" data-method="wise" class="tip-item ripple-container" data-label="Wise">
-        <div class="tip-logo">
-          <span class="logo-wise">WISE</span>
-        </div>
-        <h3>Wise</h3>
-        <p>Fast &amp; low fees internationally</p>
-      </a>
-
-      <a href="#" data-method="bitcoin" class="tip-item ripple-container" data-label="Bitcoin">
-        <div class="tip-logo">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" fill="white" opacity="0.15"/>
-            <text x="16" y="22" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">₿</text>
-          </svg>
-        </div>
-        <h3>Bitcoin</h3>
-        <p>Support with crypto</p>
-      </a>
-
-      <a href="#" data-method="ethereum" class="tip-item ripple-container" data-label="Ethereum">
-        <div class="tip-logo">
-          <svg width="26" height="34" viewBox="0 0 26 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="13,0 26,20 13,27 0,20" fill="white" opacity="0.9"/>
-            <polygon points="13,30 26,22 13,40 0,22" fill="white" opacity="0.6"/>
-          </svg>
-        </div>
-        <h3>Ethereum</h3>
-        <p>Support with crypto</p>
-      </a>
-
-      <a href="#" data-method="more" class="tip-item ripple-container" data-label="More options">
-        <div class="tip-logo">
-          <span style="font-size:26px; filter: drop-shadow(0 2px 4px rgba(232,99,126,0.4));">💕</span>
-        </div>
-        <h3>…and more!</h3>
-        <p>More options coming soon</p>
-      </a>
-    </div>
-
-    <!-- Custom amount -->
-    <div class="custom-tip">
-      <div class="icon-wrap">
-        <span class="hand">🤲</span>
-        <span class="heart-float">❤️</span>
-      </div>
-      <div class="custom-tip-text">
-        <h3>Custom Amount</h3>
-        <p>Choose your own amount and leave your mark 💝</p>
-      </div>
-      <button class="btn-tip ripple-container" id="tipNow">
-        TIP NOW →
-      </button>
-    </div>
-  </div>
-
-  <!-- SOCIAL -->
-  <div class="social-section">
-    <div class="social-label">Connect with me</div>
-    <div class="social-icons">
-      <a href="#" class="social-icon" title="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-      </a>
-      <a href="#" class="social-icon" title="TikTok">
-        <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.08a4.85 4.85 0 0 1-1-.39z"/>
-        </svg>
-      </a>
-      <a href="#" class="social-icon" title="X (Twitter)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-      </a>
-      <a href="#" class="social-icon" title="YouTube">
-        <svg width="22" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
-        </svg>
-      </a>
-      <a href="#" class="social-icon" title="Link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-
-</div><!-- /wrapper -->
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-main">
-    <span class="sparkle">✦</span> Thank you! 🩷 <span class="sparkle">✦</span>
-  </div>
-  <div class="footer-sub">You are amazing!</div>
-</footer>
-
-<!-- Toast notification -->
-<div class="toast" id="toast"></div>
-
-<script>
-  // ===== PARTICLES =====
-  const container = document.getElementById('particles');
-  const particleData = [
-    { left: '8%',  dur: '9s',  delay: '0s',    drift: '30px',  type: 'dot' },
-    { left: '20%', dur: '12s', delay: '1.5s', drift: '-20px', type: 'heart' },
-    { left: '35%', dur: '8s',  delay: '0.5s', drift: '50px',  type: 'dot' },
-    { left: '50%', dur: '14s', delay: '2s',    drift: '-30px', type: 'heart' },
-    { left: '65%', dur: '10s', delay: '0.8s', drift: '20px',  type: 'dot' },
-    { left: '78%', dur: '11s', delay: '3s',    drift: '-40px', type: 'heart' },
-    { left: '90%', dur: '9s',  delay: '1s',    drift: '25px',  type: 'dot' },
-    { left: '45%', dur: '13s', delay: '4s',    drift: '-15px', type: 'heart' },
-    { left: '12%', dur: '16s', delay: '2.5s', drift: '35px',  type: 'dot' },
-    { left: '58%', dur: '7s',  delay: '0.3s', drift: '-25px', type: 'dot' },
-  ];
-  particleData.forEach(p => {
-    const el = document.createElement('div');
-    el.classList.add('particle');
-    if (p.type === 'heart') { el.classList.add('heart'); el.textContent = '♡'; }
-    el.style.cssText = `left:${p.left}; bottom:-10px; --dur:${p.dur}; --delay:${p.delay}; --drift:${p.drift}`;
-    container.appendChild(el);
-  });
-
-  // ===== RIPPLE EFFECT =====
-  document.querySelectorAll('.ripple-container').forEach(el => {
-    el.addEventListener('click', function(e) {
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height) * 2;
-      const r = document.createElement('div');
-      r.classList.add('ripple');
-      r.style.cssText = `width:${size}px; height:${size}px; left:${e.clientX - rect.left - size/2}px; top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 600);
-    });
-  });
-
-  // ===== TIP CLICK FEEDBACK =====
-  const toast = document.getElementById('toast');
-  let toastTimer;
-
-  function showToast(msg) {
-    clearTimeout(toastTimer);
-    toast.textContent = msg;
-    toast.classList.add('show');
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
-  }
-
-  document.querySelectorAll('.tip-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-      e.preventDefault();
-      showToast(`Opening ${this.dataset.label}… 💖`);
-    });
-  });
-
-  document.getElementById('tipNow').addEventListener('click', function(e) {
-    e.preventDefault();
-    showToast('Thank you so much! 🩷 Redirecting…');
-  });
-
-  // ===== INTERSECTION OBSERVER for scroll reveal =====
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animationPlayState = 'running';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta etiquetas para SEO y Redes Sociales -->
+    <meta
+      name="description"
+      content="Si este proyecto te sirvió, una pequeña propina es el mejor motor para seguir creando contenido de valor. ¡Gracias por tu generosidad!"
+    />
+    <!-- WhatsApp / Facebook / LinkedIn (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://estefi-three.vercel.app/" />
+    <!-- Cambiá esto por tu link real -->
+    <meta
+      property="og:title"
+      content="¡Un cafecito por aquí! Gracias por tu propina"
+    />
+    <meta
+      property="og:description"
+      content="¿Te fue útil? Tu apoyo ayuda a mantener este espacio vivo. ¡Cada granito de arena cuenta!"
+    />
+    <meta
+      property="og:image"
+      content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://estefi-three.vercel.app/" />
+    <meta property="twitter:title" content="¡Gracias por tu propina!" />
+    <meta
+      property="twitter:description"
+      content="Si valorás mi trabajo, podés colaborar con una propina aquí. ¡Muchas gracias!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png"
+    />
+    <title>Enrique Tomas – Tips Appreciated!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.benefits, .tips-card, .social-section').forEach(el => {
-    el.style.animationPlayState = 'paused';
-    observer.observe(el);
-  });
-</script>
-</body>
+      :root {
+        --pink: #f4a0b0;
+        --pink-deep: #e8637e;
+        --blush: rgba(253, 232, 238, 0.85); /* Semi-transparent */
+        --cream: rgba(255, 248, 245, 0.9); /* Semi-transparent */
+        --warm: #f9efe7;
+        --text: #2d1f25;
+        --text-soft: #7a5360;
+        --gold: #d4a843;
+        --white: rgba(255, 255, 255, 0.9); /* Semi-transparent */
+        --shadow: 0 8px 32px rgba(232, 99, 126, 0.15);
+        --shadow-sm: 0 3px 12px rgba(232, 99, 126, 0.12);
+      }
+      html {
+        scroll-behavior: smooth;
+      } /* body { font-family: 'DM Sans', sans-serif; /* Injected Background Image */ /* background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png"); background-size: cover; background-position: center; background-attachment: fixed; color: var(--text); min-height: 100vh; overflow-x: hidden; } */
+      body {
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+        background-color: var(--warm); /* Color de respaldo */
+      } /* Nuevo método para fondo fijo sin saltos */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      } /* ===== FLOATING PARTICLES ===== */
+      .particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--pink);
+        opacity: 0;
+        animation: floatUp var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
+      }
+      .particle:nth-child(odd) {
+        width: 4px;
+        height: 4px;
+        background: var(--pink-deep);
+      }
+      .particle.heart {
+        width: auto;
+        height: auto;
+        background: transparent;
+        font-size: 12px;
+        animation: floatUp var(--dur, 10s) var(--delay, 0s) infinite ease-in-out;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-10vh) translateX(var(--drift, 40px))
+            rotate(360deg);
+          opacity: 0;
+        }
+      } /* ===== WRAPPER ===== */ /* .wrapper { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 0 0 60px; background: rgba(255, 255, 255, 0.7); /* Translucent background for content */ /* backdrop-filter: blur(5px); /* Added blur for legibility */ /* border-radius: 20px; /* Rounded wrapper corners */ /* margin-top: 20px; /* Shifted down slightly */ /* border: 1px solid rgba(255,255,255,0.3); } */ /* ===== WRAPPER MÁS TRANSPARENTE ===== */
+      .wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        margin: 20px auto; /* Centrado con margen arriba */
+        padding: 0 0 60px; /* Bajamos la opacidad de 0.7 a 0.4 o 0.5 según tu gusto */
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(
+          8px
+        ); /* Aumentamos el desenfoque para que el texto sea legible */
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      } /* ===== HEADER ===== */ /* .site-header { background: linear-gradient(160deg, rgba(255, 240, 244, 0.8) 0%, var(--blush) 60%, rgba(255, 216, 228, 0.8) 100%); padding: 28px 24px 0; position: relative; overflow: hidden; border-radius: 20px 20px 0 0; /* Match wrapper corners */ /* } */ /* Ajuste del header para que sea más sutil */
+      .site-header {
+        /* Gradiente con más transparencia */
+        background: linear-gradient(
+          160deg,
+          rgba(255, 240, 244, 0.5) 0%,
+          rgba(253, 232, 238, 0.4) 60%,
+          rgba(255, 216, 228, 0.5) 100%
+        );
+        padding: 28px 24px 0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px 20px 0 0;
+      }
+      .site-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 248, 245, 0.9)
+        ); /* Matches cream transparency */
+      }
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+      .logo-box {
+        border: 2.5px solid var(--text);
+        padding: 8px 14px;
+        text-align: center;
+        background: var(--white);
+        box-shadow: 3px 3px 0 var(--text);
+        animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      .logo-box .brand {
+        font-family: "Playfair Display", serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+        color: var(--text);
+      }
+      .logo-box .stars {
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+      .support-badge {
+        background: var(--white);
+        border: 1.5px solid var(--pink);
+        border-radius: 20px;
+        padding: 8px 14px 8px 10px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--pink-deep);
+        box-shadow: var(--shadow-sm);
+        animation: popIn 0.7s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      .support-badge .dot {
+        width: 22px;
+        height: 22px;
+        background: rgba(253, 232, 238, 0.1); /* Semi-transparent */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        animation: heartbeat 1.6s 1s ease-in-out infinite;
+      }
+      .hero-text {
+        padding: 20px 0 10px;
+        animation: slideUp 0.7s 0.2s ease both;
+      }
+      .hero-text h1 {
+        font-family: "DM Sans", sans-serif;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .hero-text .tagline {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 30px;
+        color: var(--pink-deep);
+        line-height: 1.2;
+      }
+      .tagline span.heart-inline {
+        display: inline-block;
+        animation: heartbeat 1.4s ease-in-out infinite;
+      }
+      .hero-sub {
+        font-size: 14px;
+        color: var(--text-soft);
+        line-height: 1.6;
+        margin: 14px 0 20px;
+        font-weight: 400;
+        animation: slideUp 0.7s 0.35s ease both;
+      } /* REPLACED ANIME CHAR CONTAINER WITH TRANSITIONAL SPACE */
+      .char-transition-spacer {
+        height: 10px; /* Reduced space */
+        position: relative;
+        z-index: 2;
+      } /* ===== BENEFITS ===== */
+      .benefits {
+        display: flex;
+        gap: 10px;
+        padding: 20px 24px 28px;
+        animation: slideUp 0.7s 0.4s ease both;
+        position: relative;
+        z-index: 2;
+      }
+      .benefit-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+      }
+      .benefit-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 2px solid var(--pink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .benefit-icon:hover {
+        transform: scale(1.15) rotate(-5deg);
+        box-shadow: 0 6px 20px rgba(232, 99, 126, 0.3);
+      }
+      .benefit-item span {
+        font-size: 11px;
+        color: var(--text-soft);
+        line-height: 1.4;
+        font-weight: 500;
+      } /* ===== SECTION TITLE ===== */
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+        justify-content: center;
+        margin: 0 24px 24px;
+        animation: slideUp 0.7s 0.5s ease both;
+        position: relative;
+        z-index: 2;
+      }
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1.5px;
+        background: linear-gradient(to right, transparent, var(--pink));
+      }
+      .section-title::after {
+        background: linear-gradient(to left, transparent, var(--pink));
+      }
+      .section-title span {
+        background: var(--pink-deep);
+        color: var(--white);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        padding: 6px 16px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      } /* ===== WAYS TO TIP GRID ===== */ /* .tips-card { background: var(--white); margin: 0 16px; border-radius: 24px; padding: 28px 20px 24px; box-shadow: var(--shadow); animation: slideUp 0.7s 0.55s ease both; position: relative; z-index: 2; } */ /* Ajuste de las tarjetas internas para que no se vean tan pesadas */
+      .tips-card {
+        background: rgba(255, 255, 255, 0.6); /* Tarjeta interna más clara */
+        margin: 0 16px;
+        border-radius: 24px;
+        padding: 28px 20px 24px;
+        box-shadow: var(--shadow);
+        animation: slideUp 0.7s 0.55s ease both;
+        position: relative;
+        z-index: 2;
+      }
+      .tip-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+      .tip-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 10px 14px;
+        border-radius: 16px;
+        border: 1.5px solid rgba(240, 224, 230, 0.7);
+        background: rgba(253, 232, 238, 0.9); /* Semi-transparent */
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          border-color 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+      .tip-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.8),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .tip-item:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(232, 99, 126, 0.2);
+        border-color: var(--pink);
+      }
+      .tip-item:hover::before {
+        opacity: 1;
+      }
+      .tip-logo {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+      } /* Kofi */
+      .tip-item[data-method="kofi"] .tip-logo {
+        background: linear-gradient(135deg, #29abe0, #13a5d5);
+        animation: wobble 3s 1s ease-in-out infinite;
+      } /* PayPal */
+      .tip-item[data-method="paypal"] .tip-logo {
+        background: linear-gradient(135deg, #003087, #0070ba);
+        animation: wobble 3s 1.2s ease-in-out infinite;
+      } /* Wise */
+      .tip-item[data-method="wise"] .tip-logo {
+        background: linear-gradient(135deg, #9fe870, #48d748);
+        animation: wobble 3s 1.4s ease-in-out infinite;
+      } /* Bitcoin */
+      .tip-item[data-method="bitcoin"] .tip-logo {
+        background: linear-gradient(135deg, #f7931a, #e07b10);
+        animation: pulse-glow 2s 0.5s ease-in-out infinite;
+      } /* Ethereum */
+      .tip-item[data-method="ethereum"] .tip-logo {
+        background: linear-gradient(135deg, #627eea, #4a5ecc);
+        animation: pulse-glow 2s 0.8s ease-in-out infinite;
+      } /* More */
+      .tip-item[data-method="more"] .tip-logo {
+        background: linear-gradient(135deg, #fde8ee, #fbc8d6);
+        animation: heartbeat 1.8s 0.3s ease-in-out infinite;
+      }
+      @keyframes wobble {
+        0%,
+        80%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        85% {
+          transform: rotate(-8deg) scale(1.05);
+        }
+        92% {
+          transform: rotate(6deg) scale(1.05);
+        }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(247, 147, 26, 0.4);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(247, 147, 26, 0);
+          transform: scale(1.06);
+        }
+      }
+      .tip-item[data-method="ethereum"] .tip-logo {
+        animation: pulse-glow-eth 2s 0.8s ease-in-out infinite;
+      }
+      @keyframes pulse-glow-eth {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(98, 126, 234, 0.4);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(98, 126, 234, 0);
+          transform: scale(1.06);
+        }
+      }
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        14% {
+          transform: scale(1.12);
+        }
+        28% {
+          transform: scale(1);
+        }
+        42% {
+          transform: scale(1.08);
+        }
+        70% {
+          transform: scale(1);
+        }
+      }
+      .tip-item h3 {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        text-align: center;
+      }
+      .tip-item p {
+        font-size: 10.5px;
+        color: var(--text-soft);
+        text-align: center;
+        line-height: 1.4;
+      } /* Logo images / SVGs inline */
+      .logo-kofi {
+        color: white;
+      }
+      .logo-paypal {
+        color: white;
+      }
+      .logo-wise {
+        color: #163300;
+        font-weight: 900;
+        font-size: 14px;
+        letter-spacing: -0.5px;
+      } /* ===== CUSTOM AMOUNT ===== */
+      .custom-tip {
+        background: rgba(253, 232, 238, 0.7); /* Semi-transparent */
+        border: 1.5px solid var(--pink);
+        border-radius: 16px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .custom-tip .icon-wrap {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .custom-tip .icon-wrap .hand {
+        font-size: 28px;
+        display: block;
+      }
+      .custom-tip .icon-wrap .heart-float {
+        position: absolute;
+        top: -6px;
+        right: -4px;
+        font-size: 14px;
+        animation: heartFloat 2.5s ease-in-out infinite;
+      }
+      @keyframes heartFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-8px) scale(1.15);
+          opacity: 0.8;
+        }
+      }
+      .custom-tip-text {
+        flex: 1;
+      }
+      .custom-tip-text h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 3px;
+      }
+      .custom-tip-text p {
+        font-size: 11.5px;
+        color: var(--text-soft);
+        line-height: 1.4;
+      }
+      .btn-tip {
+        background: linear-gradient(135deg, var(--pink-deep), #d44d6a);
+        color: white;
+        border: none;
+        padding: 13px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 4px 18px rgba(232, 99, 126, 0.4);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        animation: shimmer-btn 3s 2s ease-in-out infinite;
+      }
+      .btn-tip:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 28px rgba(232, 99, 126, 0.55);
+      }
+      @keyframes shimmer-btn {
+        0%,
+        80%,
+        100% {
+          filter: brightness(1);
+        }
+        90% {
+          filter: brightness(1.15);
+        }
+      } /* ===== SOCIAL ===== */
+      .social-section {
+        margin: 32px 24px 0;
+        text-align: center;
+        animation: slideUp 0.7s 0.7s ease both;
+        position: relative;
+        z-index: 2;
+      }
+      .social-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        color: var(--pink-deep);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+      }
+      .social-label::before,
+      .social-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--pink));
+      }
+      .social-label::after {
+        background: linear-gradient(to left, transparent, var(--pink));
+      }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+      .social-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 1.5px solid rgba(240, 221, 228, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--text-soft);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+        box-shadow: var(--shadow-sm);
+      }
+      .social-icon:nth-child(1) {
+        animation: spinIn 0.5s 0.8s both;
+      }
+      .social-icon:nth-child(2) {
+        animation: spinIn 0.5s 0.9s both;
+      }
+      .social-icon:nth-child(3) {
+        animation: spinIn 0.5s 1s both;
+      }
+      .social-icon:nth-child(4) {
+        animation: spinIn 0.5s 1.1s both;
+      }
+      .social-icon:nth-child(5) {
+        animation: spinIn 0.5s 1.2s both;
+      }
+      @keyframes spinIn {
+        from {
+          transform: scale(0) rotate(-180deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+      .social-icon:hover {
+        transform: translateY(-4px) scale(1.1);
+        box-shadow: 0 8px 20px rgba(232, 99, 126, 0.25);
+        border-color: var(--pink);
+        color: var(--pink-deep);
+      } /* ===== FOOTER ===== */
+      .site-footer {
+        background: linear-gradient(
+          135deg,
+          rgba(232, 99, 126, 0.9),
+          rgba(201, 64, 96, 0.9)
+        ); /* Semi-transparent */
+        margin: 36px 0 0;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0 0 20px 20px; /* Match wrapper corners */
+      }
+      .site-footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .footer-main {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 30px;
+        color: white;
+        position: relative;
+        animation: shimmerText 3s ease-in-out infinite;
+      }
+      .footer-main .sparkle {
+        display: inline-block;
+        animation: sparkle 1.5s ease-in-out infinite;
+        margin: 0 4px;
+      }
+      .footer-main .sparkle:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      @keyframes sparkle {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.3) rotate(20deg);
+          opacity: 0.8;
+        }
+      }
+      .footer-sub {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        margin-top: 6px;
+        position: relative;
+      }
+      @keyframes shimmerText {
+        0%,
+        100% {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        50% {
+          text-shadow:
+            0 0 40px rgba(255, 255, 255, 0.6),
+            0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+      } /* ===== UTILS ===== */
+      @keyframes popIn {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      } /* ===== RIPPLE ===== */
+      .ripple-container {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: rippleAnim 0.6s linear;
+        background-color: rgba(232, 99, 126, 0.25);
+        pointer-events: none;
+      }
+      @keyframes rippleAnim {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      } /* ===== TOAST ===== */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: var(--text);
+        color: white;
+        padding: 12px 22px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        z-index: 100;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        white-space: nowrap;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+      } /* ===== RESPONSIVE ===== */
+      @media (max-width: 400px) {
+        .hero-text h1 {
+          font-size: 30px;
+        }
+        .hero-text .tagline {
+          font-size: 26px;
+        }
+        .tip-item {
+          padding: 14px 6px 12px;
+        }
+        .tip-logo {
+          width: 44px;
+          height: 44px;
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+    <div class="wrapper">
+      <!-- HEADER -->
+      <header class="site-header">
+        <div class="top-bar">
+          <div class="logo-box">
+            <div class="brand">ENRIQUE<br />TOMAS</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="support-badge">
+            <div class="dot">💗</div>
+            <span>Your support<br />means the world!</span>
+          </div>
+        </div>
+        <div class="hero-text">
+          <h1>Enjoying<br />my content?</h1>
+          <div class="tagline">
+            Tips are appreciated! <span class="heart-inline">🩷</span>
+          </div>
+        </div>
+        <p class="hero-sub">
+          Thank you for supporting my work and helping me create more! 💖
+        </p>
+        <!-- Transformed into a clean transition spacer -->
+        <div class="char-transition-spacer"></div>
+      </header>
+      <!-- BENEFITS -->
+      <div class="benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">❤️</div>
+          <span>Your support<br />helps me grow</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">⭐</div>
+          <span>More content<br />more often</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">😊</div>
+          <span>Big or small,<br />it all helps!</span>
+        </div>
+      </div>
+      <!-- WAYS TO TIP -->
+      <div class="section-title"><span>✦ Ways to Tip ✦</span></div>
+      <div class="tips-card">
+        <div class="tip-grid">
+          <a
+            href="#"
+            data-method="kofi"
+            class="tip-item ripple-container"
+            data-label="Ko-fi"
+          >
+            <div class="tip-logo logo-kofi">
+              <!-- Ko-fi cup icon -->
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="36" height="36" rx="8" fill="transparent" />
+                <path
+                  d="M8 12h20v2s2 0 2 4-2 4-2 4H8V12z"
+                  fill="white"
+                  opacity="0.9"
+                />
+                <path d="M10 22v4h14v-4" fill="white" opacity="0.9" />
+                <circle cx="22" cy="17" r="2" fill="#29abe0" />
+                <path
+                  d="M13 8 Q15 5 17 8"
+                  stroke="white"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M18 7 Q20 4 22 7"
+                  stroke="white"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3>Ko-fi</h3>
+            <p>One-time tips or membership</p>
+          </a>
+          <a
+            href="#"
+            data-method="paypal"
+            class="tip-item ripple-container"
+            data-label="PayPal"
+          >
+            <div class="tip-logo logo-paypal">
+              <svg
+                width="28"
+                height="32"
+                viewBox="0 0 24 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.5 2H15c3.5 0 5.5 2 5 5.5-.5 4-3 6-6.5 6H11L9.5 22H5.5L8.5 2H6.5z"
+                  fill="white"
+                  opacity="0.95"
+                />
+                <path
+                  d="M9 8H15.5c2 0 3 1 2.5 3-.5 2.5-2 3.5-4.5 3.5h-2L9 8z"
+                  fill="#003087"
+                />
+              </svg>
+            </div>
+            <h3>PayPal</h3>
+            <p>Secure &amp; easy worldwide</p>
+          </a>
+          <a
+            href="#"
+            data-method="wise"
+            class="tip-item ripple-container"
+            data-label="Wise"
+          >
+            <div class="tip-logo"><span class="logo-wise">WISE</span></div>
+            <h3>Wise</h3>
+            <p>Fast &amp; low fees internationally</p>
+          </a>
+          <a
+            href="#"
+            data-method="bitcoin"
+            class="tip-item ripple-container"
+            data-label="Bitcoin"
+          >
+            <div class="tip-logo">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="16" cy="16" r="14" fill="white" opacity="0.15" />
+                <text
+                  x="16"
+                  y="22"
+                  text-anchor="middle"
+                  font-size="20"
+                  font-weight="bold"
+                  fill="white"
+                  font-family="Arial"
+                >
+                  ₿
+                </text>
+              </svg>
+            </div>
+            <h3>Bitcoin</h3>
+            <p>Support with crypto</p>
+          </a>
+          <a
+            href="#"
+            data-method="ethereum"
+            class="tip-item ripple-container"
+            data-label="Ethereum"
+          >
+            <div class="tip-logo">
+              <svg
+                width="26"
+                height="34"
+                viewBox="0 0 26 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon
+                  points="13,0 26,20 13,27 0,20"
+                  fill="white"
+                  opacity="0.9"
+                />
+                <polygon
+                  points="13,30 26,22 13,40 0,22"
+                  fill="white"
+                  opacity="0.6"
+                />
+              </svg>
+            </div>
+            <h3>Ethereum</h3>
+            <p>Support with crypto</p>
+          </a>
+          <a
+            href="#"
+            data-method="more"
+            class="tip-item ripple-container"
+            data-label="More options"
+          >
+            <div class="tip-logo">
+              <span
+                style="
+                  font-size: 26px;
+                  filter: drop-shadow(0 2px 4px rgba(232, 99, 126, 0.4));
+                "
+                >💕</span
+              >
+            </div>
+            <h3>…and more!</h3>
+            <p>More options coming soon</p>
+          </a>
+        </div>
+        <!-- Custom amount -->
+        <div class="custom-tip">
+          <div class="icon-wrap">
+            <span class="hand">🤲</span> <span class="heart-float">❤️</span>
+          </div>
+          <div class="custom-tip-text">
+            <h3>Custom Amount</h3>
+            <p>Choose your own amount and leave your mark 💝</p>
+          </div>
+          <button class="btn-tip ripple-container" id="tipNow">
+            TIP NOW →
+          </button>
+        </div>
+      </div>
+      <!-- SOCIAL -->
+      <div class="social-section">
+        <div class="social-label">Connect with me</div>
+        <div class="social-icons">
+          <a href="#" class="social-icon" title="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" title="TikTok">
+            <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.08a4.85 4.85 0 0 1-1-.39z"
+              />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" title="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" title="YouTube">
+            <svg width="22" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"
+              />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" title="Link">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+              />
+              <path
+                d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /wrapper -->
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <span class="sparkle">✦</span> Thank you! 🩷
+        <span class="sparkle">✦</span>
+      </div>
+      <div class="footer-sub">You are amazing!</div>
+    </footer>
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+    <script>
+      // ===== PARTICLES ===== const container = document.getElementById('particles'); const particleData = [ { left: '8%', dur: '9s', delay: '0s', drift: '30px', type: 'dot' }, { left: '20%', dur: '12s', delay: '1.5s', drift: '-20px', type: 'heart' }, { left: '35%', dur: '8s', delay: '0.5s', drift: '50px', type: 'dot' }, { left: '50%', dur: '14s', delay: '2s', drift: '-30px', type: 'heart' }, { left: '65%', dur: '10s', delay: '0.8s', drift: '20px', type: 'dot' }, { left: '78%', dur: '11s', delay: '3s', drift: '-40px', type: 'heart' }, { left: '90%', dur: '9s', delay: '1s', drift: '25px', type: 'dot' }, { left: '45%', dur: '13s', delay: '4s', drift: '-15px', type: 'heart' }, { left: '12%', dur: '16s', delay: '2.5s', drift: '35px', type: 'dot' }, { left: '58%', dur: '7s', delay: '0.3s', drift: '-25px', type: 'dot' }, ]; particleData.forEach(p => { const el = document.createElement('div'); el.classList.add('particle'); if (p.type === 'heart') { el.classList.add('heart'); el.textContent = '♡'; } el.style.cssText = left:${p.left}; bottom:-10px; --dur:${p.dur}; --delay:${p.delay}; --drift:${p.drift}; container.appendChild(el); }); // ===== RIPPLE EFFECT ===== document.querySelectorAll('.ripple-container').forEach(el => { el.addEventListener('click', function(e) { const rect = this.getBoundingClientRect(); const size = Math.max(rect.width, rect.height) * 2; const r = document.createElement('div'); r.classList.add('ripple'); r.style.cssText = width:${size}px; height:${size}px; left:${e.clientX - rect.left - size/2}px; top:${e.clientY - rect.top - size/2}px; this.appendChild(r); setTimeout(() => r.remove(), 600); }); }); // ===== TIP CLICK FEEDBACK ===== const toast = document.getElementById('toast'); let toastTimer; function showToast(msg) { clearTimeout(toastTimer); toast.textContent = msg; toast.classList.add('show'); toastTimer = setTimeout(() => toast.classList.remove('show'), 2800); } document.querySelectorAll('.tip-item').forEach(item => { item.addEventListener('click', function(e) { e.preventDefault(); showToast(Opening ${this.dataset.label}… 💖); }); }); document.getElementById('tipNow').addEventListener('click', function(e) { e.preventDefault(); showToast('Thank you so much! 🩷 Redirecting…'); }); // ===== INTERSECTION OBSERVER for scroll reveal ===== const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.animationPlayState = 'running'; } }); }, { threshold: 0.1 }); document.querySelectorAll('.benefits, .tips-card, .social-section').forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+    </script>
+  </body>
 </html>
