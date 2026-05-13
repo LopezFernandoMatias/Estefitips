@@ -3,6 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Meta etiquetas para SEO y Redes Sociales -->
+<meta name="description" content="Si este proyecto te sirvió, una pequeña propina es el mejor motor para seguir creando contenido de valor. ¡Gracias por tu generosidad!">
+
+<!-- WhatsApp / Facebook / LinkedIn (Open Graph) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://estefi-three.vercel.app/"> <!-- Cambiá esto por tu link real -->
+<meta property="og:title" content="¡Un cafecito por aquí! Gracias por tu propina">
+<meta property="og:description" content="¿Te fue útil? Tu apoyo ayuda a mantener este espacio vivo. ¡Cada granito de arena cuenta!">
+<meta property="og:image" content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://estefi-three.vercel.app/">
+<meta property="twitter:title" content="¡Gracias por tu propina!">
+<meta property="twitter:description" content="Si valorás mi trabajo, podés colaborar con una propina aquí. ¡Muchas gracias!">
+<meta property="twitter:image" content="https://i.postimg.cc/nr6G7Gvv/estefi-Meta.png">
+
 <title>Enrique Tomas – Tips Appreciated!</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -23,10 +43,11 @@
   }
 
   html { scroll-behavior: smooth; }
-
+/*
   body {
     font-family: 'DM Sans', sans-serif;
     /* Injected Background Image */
+    /*
     background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png");
     background-size: cover;
     background-position: center;
@@ -35,6 +56,30 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
+*/
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--warm); /* Color de respaldo */
+  }
+
+  /* Nuevo método para fondo fijo sin saltos */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("https://i.postimg.cc/9FWY2QcJ/stefi-Fondo-Propinas.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
 
   /* ===== FLOATING PARTICLES ===== */
   .particles {
@@ -67,26 +112,49 @@
     100% { transform: translateY(-10vh) translateX(var(--drift, 40px)) rotate(360deg); opacity: 0; }
   }
 
-  /* ===== WRAPPER ===== */
+  /* ===== WRAPPER ===== *//*
   .wrapper {
     position: relative; z-index: 1;
     max-width: 520px;
     margin: 0 auto;
     padding: 0 0 60px;
-    background: rgba(255, 255, 255, 0.7); /* Translucent background for content */
-    backdrop-filter: blur(5px); /* Added blur for legibility */
-    border-radius: 20px; /* Rounded wrapper corners */
-    margin-top: 20px; /* Shifted down slightly */
+    background: rgba(255, 255, 255, 0.7); /* Translucent background for content *//*
+    backdrop-filter: blur(5px); /* Added blur for legibility *//*
+    border-radius: 20px; /* Rounded wrapper corners *//*
+    margin-top: 20px; /* Shifted down slightly *//*
     border: 1px solid rgba(255,255,255,0.3);
   }
+*/
 
-  /* ===== HEADER ===== */
+/* ===== WRAPPER MÁS TRANSPARENTE ===== */
+  .wrapper {
+    position: relative; z-index: 1;
+    max-width: 520px;
+    margin: 20px auto; /* Centrado con margen arriba */
+    padding: 0 0 60px;
+    /* Bajamos la opacidad de 0.7 a 0.4 o 0.5 según tu gusto */
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(8px); /* Aumentamos el desenfoque para que el texto sea legible */
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  /* ===== HEADER ===== *//*
   .site-header {
     background: linear-gradient(160deg, rgba(255, 240, 244, 0.8) 0%, var(--blush) 60%, rgba(255, 216, 228, 0.8) 100%);
     padding: 28px 24px 0;
     position: relative;
     overflow: hidden;
-    border-radius: 20px 20px 0 0; /* Match wrapper corners */
+    border-radius: 20px 20px 0 0; /* Match wrapper corners *//*
+  }
+    */
+  /* Ajuste del header para que sea más sutil */
+  .site-header {
+    /* Gradiente con más transparencia */
+    background: linear-gradient(160deg, rgba(255, 240, 244, 0.5) 0%, rgba(253, 232, 238, 0.4) 60%, rgba(255, 216, 228, 0.5) 100%);
+    padding: 28px 24px 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
   }
   .site-header::after {
     content: '';
@@ -252,7 +320,7 @@
     white-space: nowrap;
   }
 
-  /* ===== WAYS TO TIP GRID ===== */
+  /* ===== WAYS TO TIP GRID ===== *//*
   .tips-card {
     background: var(--white);
     margin: 0 16px;
@@ -263,7 +331,19 @@
     position: relative;
     z-index: 2;
   }
+*/
 
+/* Ajuste de las tarjetas internas para que no se vean tan pesadas */
+  .tips-card {
+    background: rgba(255, 255, 255, 0.6); /* Tarjeta interna más clara */
+    margin: 0 16px;
+    border-radius: 24px;
+    padding: 28px 20px 24px;
+    box-shadow: var(--shadow);
+    animation: slideUp 0.7s 0.55s ease both;
+    position: relative;
+    z-index: 2;
+  }
   .tip-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
